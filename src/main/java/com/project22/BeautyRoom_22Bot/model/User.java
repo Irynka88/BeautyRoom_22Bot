@@ -1,9 +1,6 @@
 package com.project22.BeautyRoom_22Bot.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jdk.jfr.ContentType;
 import lombok.AllArgsConstructor;
@@ -13,16 +10,13 @@ import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
-@Builder
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Component
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long chatId;
     @NotNull
     private String firstName;
@@ -31,6 +25,8 @@ public class User {
     @NotNull
     private String userName;
     @NotNull
-    private Timestamp registeredAt;
+    private LocalDate registeredAt;
 
+    @OneToMany(mappedBy = "user")
+    private Set<UserProcedure> userProcedures;
 }

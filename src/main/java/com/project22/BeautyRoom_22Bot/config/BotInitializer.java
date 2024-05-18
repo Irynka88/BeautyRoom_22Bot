@@ -1,7 +1,7 @@
 package com.project22.BeautyRoom_22Bot.config;
 
 
-import com.project22.BeautyRoom_22Bot.service.TelegramBot;
+import com.project22.BeautyRoom_22Bot.extension.TelegramBot;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -27,8 +27,7 @@ public class BotInitializer {
 
         }
         catch (TelegramApiException e){
-//            log.error("Error occurred: " + e.getMessage());
-
+            e.printStackTrace();
         }
     }
 
